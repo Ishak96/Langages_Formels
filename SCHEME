@@ -1,0 +1,84 @@
+;la valeur null
+(define null '())
+(define liste '(2 4 7))
+
+;a
+(* (+ (* 13 79) (* 14 57)) 21)
+
+;b
+(let ((x 213) (y 791)) (* (* (* x y) (* x y)) (* x y)))
+
+;c
+(define f (lambda(x) (* 37 x)))
+
+;d
+(define sum (lambda(n)
+    (if (= n 0)
+         0
+         (+ n (sum(- n 1)))
+    ))    
+)
+
+;e
+(letrec ((sum (lambda (n)
+                (if (zero? n)
+                    0
+                    (+ n (sum (- n 1)))))
+         )
+        )
+  (sum 1000)
+ )
+
+;f
+(cons 3(cons 5 null))
+
+;la longeur d'une liste
+(define (longeur liste)
+  (if (null? liste)
+      0
+      (+ 1 (longeur(cdr liste)))
+  )
+)
+(longeur liste)
+
+;extraire le 2éme élément de la liste
+(car(cdr liste))
+
+;la somme de tous les éléments de la liste
+(define (sommeListe liste)
+  (if (null? liste)
+      0
+      (+ (car liste) (sommeListe(cdr liste)))
+  )
+)
+(sommeListe liste)
+
+;construction d'une liste a partir des n 1er nombres
+(define (consListe n)
+  (if (= n 0)
+      '(0)
+      (cons n (consListe (- n 1)))
+   )
+ )
+(consListe 10)
+
+;fonction filtre
+(define p (lambda(n) (< n 5)))
+(define (filtre liste p)
+  (if (null? liste)
+      '()
+      (cons ( p(car liste) ) (filtre (cdr liste) p ))
+  )
+)
+(filtre liste p)
+
+;la produit de tous les éléments de la liste
+(define (prodListe liste)
+  (if (null? liste)
+      1
+      (* (car liste) (prodListe(cdr liste)))
+  )
+)
+(prodListe liste)
+
+;f°g
